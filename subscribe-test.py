@@ -20,9 +20,10 @@ config = read_config()
 dbclient = InfluxDBClient('localhost', 8086)
 dbclient.switch_database(config['db-name'])
 
-# MQTT broker credentials
+# MQTT broker
 USER = config['broker-user']
 PASS = config['broker-pass']
+TOPIC = config['topic-root']
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -30,7 +31,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe("Ridgeway/Office2/#")
+    client.subscribe(TOPIC + "#")
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):

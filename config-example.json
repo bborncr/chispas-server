@@ -1,7 +1,9 @@
 {
+"broker-url": "localhost",
 "broker-user": "broker username",
 "broker-pass": "broker password",
 "db-user": "",
 "db-pass": "",
-"db-name": "db-name"
+"db-name": "db-name",
+"topic-root": "Namespace/Group/"
 }
